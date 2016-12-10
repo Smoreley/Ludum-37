@@ -1,15 +1,15 @@
 :root {
     --windowWidth: 640px;
     --windowHeight: 360px;
-/*
     
+/*
     --windowWidth: 1280px;
     --windowHeight: 720px;
 */
 }
 
 body {
-    background-color: #222;
+    background-color: #f1f1f1;
 }
 
 header {
