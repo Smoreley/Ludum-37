@@ -9,10 +9,10 @@ function init() {
     
     game = new Phaser.Game(GAME_WIDTH, GAME_HEIGHT, Phaser.AUTO, 'game-canvas');
 
-    game.state.add('Menu', Menu);
+    // game.state.add('Menu', Menu);
     game.state.add('Game', Game);
 
-    game.state.start('Menu');
+    game.state.start('Game');
 
 }
 

@@ -1,6 +1,6 @@
 class Menu {
     constructor() {
-        this.name = "Menu_state";
+        // this.name = "Menu_state";
         
 //        this.graphics = new Graphics();
 
@@ -12,15 +12,15 @@ class Menu {
     
     // preload is called first. Normally you'd use this to load your game asset
     preload () {
-        game.load.image('bg_image', 'bin/imgs/bg_menu.jpeg');
+        // game.load.image('bg_image', 'bin/imgs/bg_menu.jpeg');
 
     }
     
     // create is called once preload has completed
     create () {
         
-        this.bg = game.add.sprite(0, 0, 'bg_image');
-        this.graphics = game.add.graphics(0,0);
+        // this.bg = game.add.sprite(0, 0, 'bg_image');
+        // this.graphics = game.add.graphics(0,0);
 
     }
     
@@ -33,13 +33,13 @@ class Menu {
     render () {
     
     // Circle
-    this.graphics.beginFill(0xff0000);
-    this.graphics.drawCircle(GAME_WIDTH/2, GAME_HEIGHT/2, 25);
-    this.graphics.endFill();
+    // this.graphics.beginFill(0xff0000);
+    // this.graphics.drawCircle(GAME_WIDTH/2, GAME_HEIGHT/2, 25);
+    // this.graphics.endFill();
         
-    this.graphics.beginFill(0xe74c3c); // Red
-    this.graphics.drawRect(0,0,50,50);
-    this.graphics.endFill();
+    // this.graphics.beginFill(0xe74c3c); // Red
+    // this.graphics.drawRect(0,0,50,50);
+    // this.graphics.endFill();
 
     }
     
