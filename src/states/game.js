@@ -12,11 +12,8 @@ class Game {
         
         game.load.atlasJSONHash('bot', 'bin/imgs/mainChar.png', 'bin/imgs/mainChar.json');
         
-//        game.load.json('myKey', 'bin/imgs/ludMap37.json');
-        
         game.load.tilemap('mario', 'bin/imgs/ludMap37.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tiles', 'bin/imgs/mapTile.png');
-        
     }
     
     create () {
@@ -36,18 +33,7 @@ class Game {
         this.object_layer.resizeWorld();
         this.object_layer.scale.setTo(2,2);
         
-        
         game.world.setBounds(0, 0, 4096, 2048);
-//        game.add.sprite(0, 0, 'backdrop');
-        
-//        this.house = game.add.sprite(0, 0, 'houseimage');
-//        this.house.anchor.setTo(0.5, 0.5);
-//        
-//        game.physics.enable(this.house, Phaser.Physics.ARCADE);
-//        this.house.f = new Phaser.Point(1,0);
-//        this.newDirection = new Phaser.Point(0,0);
-        
-        
         
         this.house = game.add.sprite(0, 0, 'bot');
         this.house.anchor.setTo(0.5, 0.5);
@@ -104,7 +90,7 @@ class Game {
         this.house.body.velocity = this.house.body.velocity.multiply(0.9,0.9);
 //        
 //        var vTwo = new Phaser.Point(this.house.x, this.house.y);
-//        var vOne = new Phaser.Point(10,20);
+//        var vOne = new Phaser.Point(10    ,20);
 //        this.house.position = Phaser.Point.add(this.newDirection, this.house.position);
 //        this.newDirection = Phaser.Point.add(vOne, vTwo.multiply(-1,-1)).normalize().setMagnitude(vDist/10);
 //        this.newAngle = this.house.angle*(180.0/Math.PI)+90.0;
