@@ -12,7 +12,7 @@ class Game {
         
         game.load.atlasJSONHash('bot', 'bin/imgs/mainChar.png', 'bin/imgs/mainChar.json');
         
-        game.load.tilemap('mario', 'bin/imgs/ludMap37.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.tilemap('ludmap', 'bin/imgs/ludMap37.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tiles', 'bin/imgs/mapTile.png');
     }
     
@@ -23,14 +23,17 @@ class Game {
         game.stage.backgroundColor = '#787878';
         
             // Background Map
-        this.map = game.add.tilemap('mario');
+        this.map = game.add.tilemap('ludmap');
         this.map.addTilesetImage('Main Map', 'tiles');
         this.ground_layer = this.map.createLayer('Ground');
         this.object_layer = this.map.createLayer('Objects');
         
+        //collision on blockedLayer
+        this.map.setCollisionBetween(1, 20000, true, 'Objects');
+        
         this.ground_layer.resizeWorld();
-        this.ground_layer.scale.setTo(2,2);
         this.object_layer.resizeWorld();
+        this.ground_layer.scale.setTo(2,2);
         this.object_layer.scale.setTo(2,2);
         
         game.world.setBounds(0, 0, 4096, 2048);
@@ -44,9 +47,22 @@ class Game {
         this.house.f = new Phaser.Point(1,0);
         this.newDirection = new Phaser.Point(0,0);
         game.camera.follow(this.house);
+        
+        
+        this.sprite2 = game.add.sprite(700, 220, 'houseimage');
+        this.sprite2.name = 'houseimage'
+        game.physics.enable(this.sprite2, Phaser.Physics.ARCADE);        
+        
+        
+        // Set collision
+//        this.house.body.width = 32;    this.house.body.height = 32
+        this.house.body.setSize(32,32,16,16);
     }
     
     update () {
+        game.physics.arcade.collide(this.house, this.sprite2, collisionHandler, null, this);
+        game.physics.arcade.collide(this.house, this.object_layer, collisionHandler);
+        
         var deltaTime = (game.time.elapsed/1000.0);
         
         if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
@@ -86,10 +102,17 @@ class Game {
         game.debug.start(20, 20, 'white');
         game.debug.text(this.house.position, 32, 76);        
         game.debug.stop();
+        
+        game.debug.body(this.house);
+        game.debug.body(this.sprite2);
     }
 }
 
 function move(object, speed) {
     object.f = new Phaser.Point(Math.cos(object.rotation-Math.PI/2), Math.sin(object.rotation-Math.PI/2));
     object.f = object.f.multiply(speed,speed); 
+}
+
+function collisionHandler (obj1, obj2) {
+
 }

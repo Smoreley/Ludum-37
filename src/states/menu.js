@@ -27,8 +27,6 @@ class Menu {
     
     // The update method is left empty for your own use. It is called during the core game loop
     update () {
-        xPos += 1;
-        yPos += 1;
         
     }
     
@@ -38,7 +36,7 @@ class Menu {
         
     this.graphics.endFill();
     this.graphics.beginFill(0xe74c3c); // Red
-    this.graphics.drawRect(xPos,0,50,50);
+    this.graphics.drawRect(256,0,50,50);
     
     // Circle
     this.graphics.beginFill(0xff0000);
@@ -57,6 +55,3 @@ class Menu {
         this.state.start('Game');
     }
 }
-
-var xPos = 0;
-var yPos = 0;

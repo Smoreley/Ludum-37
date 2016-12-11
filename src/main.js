@@ -1,5 +1,5 @@
 //var game = new Phaser.Game(640, 360, Phaser.AUTO, 'gameWindow', { preload: preload, create: create, update: update, render: render});
-const GAME_WIDTH = 1280, GAME_HEIGHT = 720;
+const GAME_WIDTH = 640, GAME_HEIGHT = 360;
 
 var game;
 
