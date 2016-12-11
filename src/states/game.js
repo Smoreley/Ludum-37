@@ -44,18 +44,10 @@ class Game {
         this.house.f = new Phaser.Point(1,0);
         this.newDirection = new Phaser.Point(0,0);
         game.camera.follow(this.house);
-        
-        
-//        this.bot = game.add.sprite(512, 512, 'bot');
-//        this.bot.scale.setTo(2, 2);
-//        this.bot.animations.add('run');
-//        this.bot.animations.play('run', 16, true);
     }
     
     update () {
         var deltaTime = (game.time.elapsed/1000.0);
-
-        console.log(this.house.body.speed);
         
         if (game.input.keyboard.isDown(Phaser.Keyboard.LEFT))
         {
@@ -73,17 +65,10 @@ class Game {
         }
         else if (game.input.keyboard.isDown(Phaser.Keyboard.DOWN))
         {
-            move(this.house, -1);            
+            move(this.house, -1);          
         } else {
             this.house.f = new Phaser.Point(0,0);
         }
-          
-//        this.house.f = this.house.f.normalize();
-//        console.log(this.house.f);
-//        this.house.x += this.house.v.x * this.speed * deltaTime;
-//        this.house.v.x += this.house.f.x * this.speed * deltaTime;
-//        this.house.y += this.house.v.y * deltaTime;
-//        this.house.v.y += this.house.f.y * deltaTime;
         
         this.house.body.velocity.x += this.house.f.x * this.speed;
         this.house.body.velocity.y += this.house.f.y * this.speed;
@@ -101,7 +86,6 @@ class Game {
         game.debug.start(20, 20, 'white');
         game.debug.text(this.house.position, 32, 76);        
         game.debug.stop();
-
     }
 }
 

@@ -12,6 +12,7 @@ class Menu {
     
     // preload is called first. Normally you'd use this to load your game asset
     preload () {
+        game.stage.smoothed = false;
         game.load.image('bg_image', 'bin/imgs/bg_menu.jpeg');
 
     }
