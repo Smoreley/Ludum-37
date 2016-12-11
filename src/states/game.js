@@ -13,12 +13,8 @@ class Game {
         game.load.image('houseimage', 'bin/imgs/character64.png');
 //        game.load.image('backdrop', 'bin/imgs/bg_map2.png');
         game.load.atlasJSONHash('bot', 'bin/imgs/mainChar.png', 'bin/imgs/mainChar.json');
-<<<<<<< HEAD
         
         game.load.tilemap('ludmap', 'bin/imgs/ludMap37.json', null, Phaser.Tilemap.TILED_JSON);
-=======
-        game.load.tilemap('mario', 'bin/imgs/ludMap37.json', null, Phaser.Tilemap.TILED_JSON);
->>>>>>> 9136ccabc0c6b84fe5a9c04921e64d704b2209d6
         game.load.image('tiles', 'bin/imgs/mapTile.png');
         
         game.load.image('bullet', 'bin/imgs/toilet32.png');
@@ -37,12 +33,12 @@ class Game {
         this.object_layer = this.map.createLayer('Objects');
         
         //collision on blockedLayer
-        this.map.setCollisionBetween(1, 20000, true, 'Objects');
         
-        this.ground_layer.resizeWorld();
-        this.object_layer.resizeWorld();
         this.ground_layer.scale.setTo(2,2);
         this.object_layer.scale.setTo(2,2);
+        this.ground_layer.resizeWorld();
+        this.object_layer.resizeWorld();
+        this.map.setCollisionBetween(1, 20000, true, 'Objects');
         
         game.world.setBounds(0, 0, 4096, 2048);
         
@@ -54,9 +50,7 @@ class Game {
         game.physics.enable(this.house, Phaser.Physics.ARCADE);
         this.house.f = new Phaser.Point(1,0);
         this.newDirection = new Phaser.Point(0,0);
-        game.camera.follow(this.house);
-<<<<<<< HEAD
-        
+        game.camera.follow(this.house);        
         
         this.sprite2 = game.add.sprite(700, 220, 'houseimage');
         this.sprite2.name = 'houseimage'
@@ -66,10 +60,8 @@ class Game {
         // Set collision
 //        this.house.body.width = 32;    this.house.body.height = 32
         this.house.body.setSize(32,32,16,16);
-=======
 
         // Projectile
-
         this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
         this.bullets = game.add.group();
@@ -79,8 +71,6 @@ class Game {
         this.bullets.createMultiple(50, 'bullet');
         this.bullets.setAll('checkWorldBounds', true);
         this.bullets.setAll('outOfBoundsKill', true);
-        
->>>>>>> 9136ccabc0c6b84fe5a9c04921e64d704b2209d6
     }
     
     update () {
@@ -132,12 +122,9 @@ class Game {
         game.debug.text();
         game.debug.start(20, 20, 'white');
         game.debug.text(this.house.position, 32, 76);        
-        game.debug.stop();
-<<<<<<< HEAD
-        
+        game.debug.stop();        
         game.debug.body(this.house);
         game.debug.body(this.sprite2);
-=======
 
         game.debug.text('Active Bullets: ' + this.bullets.countLiving() + ' / ' + this.bullets.total, 32, 32);
 
@@ -152,7 +139,6 @@ class Game {
             //bullet.body.velocity.y = 300;
             game.physics.arcade.moveToPointer(bullet, 600);
         }
->>>>>>> 9136ccabc0c6b84fe5a9c04921e64d704b2209d6
     }
 }
 
@@ -160,10 +146,7 @@ function move(object, speed) {
     object.f = new Phaser.Point(Math.cos(object.rotation-Math.PI/2), Math.sin(object.rotation-Math.PI/2));
     object.f = object.f.multiply(speed,speed); 
 }
-<<<<<<< HEAD
 
 function collisionHandler (obj1, obj2) {
 
 }
-=======
->>>>>>> 9136ccabc0c6b84fe5a9c04921e64d704b2209d6
