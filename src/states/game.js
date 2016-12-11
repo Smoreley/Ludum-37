@@ -4,16 +4,19 @@ class Game {
         this.speed = 40;
         this.dir = 1;
         this.rotationSpeed = 90;
+
+        this.fireRate = 300;
+        this.nextFire = 0;
     }
     
     preload () {
         game.load.image('houseimage', 'bin/imgs/character64.png');
 //        game.load.image('backdrop', 'bin/imgs/bg_map2.png');
-        
         game.load.atlasJSONHash('bot', 'bin/imgs/mainChar.png', 'bin/imgs/mainChar.json');
-        
         game.load.tilemap('mario', 'bin/imgs/ludMap37.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tiles', 'bin/imgs/mapTile.png');
+        
+        game.load.image('bullet', 'bin/imgs/toilet32.png');
     }
     
     create () {
@@ -44,6 +47,19 @@ class Game {
         this.house.f = new Phaser.Point(1,0);
         this.newDirection = new Phaser.Point(0,0);
         game.camera.follow(this.house);
+
+        // Projectile
+
+        this.spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+        this.bullets = game.add.group();
+        this.bullets.enableBody = true;
+        this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
+
+        this.bullets.createMultiple(50, 'bullet');
+        this.bullets.setAll('checkWorldBounds', true);
+        this.bullets.setAll('outOfBoundsKill', true);
+        
     }
     
     update () {
@@ -79,6 +95,13 @@ class Game {
 //        this.house.position = Phaser.Point.add(this.newDirection, this.house.position);
 //        this.newDirection = Phaser.Point.add(vOne, vTwo.multiply(-1,-1)).normalize().setMagnitude(vDist/10);
 //        this.newAngle = this.house.angle*(180.0/Math.PI)+90.0;
+
+        // Projectile
+
+        if (this.spaceKey.isDown)
+        {
+            this.fire();
+        }
     }
     
     render () {
@@ -86,6 +109,20 @@ class Game {
         game.debug.start(20, 20, 'white');
         game.debug.text(this.house.position, 32, 76);        
         game.debug.stop();
+
+        game.debug.text('Active Bullets: ' + this.bullets.countLiving() + ' / ' + this.bullets.total, 32, 32);
+
+    }
+
+    fire() {
+        if (game.time.now > this.nextFire && this.bullets.countDead() > 0) {
+            this.nextFire = game.time.now + this.fireRate;
+            var bullet = this.bullets.getFirstDead();
+            bullet.reset(this.house.x - 8, this.house.y - 8);
+
+            //bullet.body.velocity.y = 300;
+            game.physics.arcade.moveToPointer(bullet, 600);
+        }
     }
 }
 
