@@ -32,21 +32,6 @@ class Game {
         this.map.setCollisionBetween(1, 2000, true, 'Objects');
 
         this.object_layer.resizeWorld();
-<<<<<<< HEAD
-
-        game.world.setBounds(0, 0, 4096, 1024);
-
-        this.house = new Player();
-
-        this.mockSprite = game.add.sprite(700, 220, 'houseimage');
-        this.mockSprite.name = 'houseimage'
-        game.physics.enable(this.mockSprite, Phaser.Physics.ARCADE);
-    }
-
-    update () {
-        game.physics.arcade.collide(this.house.spr, this.mockSprite, collisionHandler, null, this);
-        game.physics.arcade.collide(this.house.spr, this.object_layer, collisionHandler);
-=======
         this.ground_layer.resizeWorld();
 
         game.world.setBounds(0, 0, 2048, 1024);
@@ -63,7 +48,6 @@ class Game {
 
         // collisiong with bullets and house sprite
         game.physics.arcade.collide(this.house.bullets, this.house.spr, collisionHandler);
->>>>>>> 51f4dc47656da4587b97f3bb904ea1feea53aa1a
 
         this.house.update();
     }
@@ -71,16 +55,9 @@ class Game {
     render () {
         game.debug.text();
         game.debug.start(20, 20, 'white');
-<<<<<<< HEAD
-        game.debug.text(this.house.spr.position, 32, 76);
-        game.debug.stop();
-        game.debug.body(this.house.spr);
-        game.debug.body(this.mockSprite);
-=======
         game.debug.text("X: "+Math.round(this.house.spr.position.x)+" y: "+Math.round(this.house.spr.position.y), 32, 76);
         game.debug.stop();
 //        game.debug.body(this.house.spr);
->>>>>>> 51f4dc47656da4587b97f3bb904ea1feea53aa1a
 
         game.debug.text('Active Bullets: ' + this.house.bullets.countLiving() + ' / ' + this.house.bullets.total, 32, 32);
     }
