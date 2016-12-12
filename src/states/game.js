@@ -1,10 +1,11 @@
+var myMap;
+
 class Game {
     constructor() {
         this.name = "game_state";
     }
 
     preload () {
-        game.load.image('houseimage', 'bin/imgs/character64.png');
         game.load.atlasJSONHash('bot', 'bin/imgs/mainChar.png', 'bin/imgs/mainChar.json');
 
         game.load.tilemap('ludmap', 'raw/ludMapMike.json', null, Phaser.Tilemap.TILED_JSON);
@@ -24,11 +25,14 @@ class Game {
         this.ground_layer = this.map.createLayer('Ground');
         this.object_layer = this.map.createLayer('Objects');
 
-        //collision on blockedLayer
-        this.map.setCollisionBetween(1, 20000, true, 'Objects');
+        this.map.setLayer(this.object_layer);
+        myMap = this.map;
 
-        this.ground_layer.resizeWorld();
+        //collision on blockedLayer
+        this.map.setCollisionBetween(1, 2000, true, 'Objects');
+
         this.object_layer.resizeWorld();
+<<<<<<< HEAD
 
         game.world.setBounds(0, 0, 4096, 1024);
 
@@ -42,6 +46,24 @@ class Game {
     update () {
         game.physics.arcade.collide(this.house.spr, this.mockSprite, collisionHandler, null, this);
         game.physics.arcade.collide(this.house.spr, this.object_layer, collisionHandler);
+=======
+        this.ground_layer.resizeWorld();
+
+        game.world.setBounds(0, 0, 2048, 1024);
+
+        this.house = new Player();
+    }
+
+    update () {
+        // Collision with house and object layer
+        game.physics.arcade.collide(this.house.spr, this.object_layer, collisionHandler);
+
+        // Collision with bullets and object layer
+        game.physics.arcade.collide(this.house.bullets, this.object_layer, collisionHandler);
+
+        // collisiong with bullets and house sprite
+        game.physics.arcade.collide(this.house.bullets, this.house.spr, collisionHandler);
+>>>>>>> 51f4dc47656da4587b97f3bb904ea1feea53aa1a
 
         this.house.update();
     }
@@ -49,13 +71,18 @@ class Game {
     render () {
         game.debug.text();
         game.debug.start(20, 20, 'white');
+<<<<<<< HEAD
         game.debug.text(this.house.spr.position, 32, 76);
         game.debug.stop();
         game.debug.body(this.house.spr);
         game.debug.body(this.mockSprite);
+=======
+        game.debug.text("X: "+Math.round(this.house.spr.position.x)+" y: "+Math.round(this.house.spr.position.y), 32, 76);
+        game.debug.stop();
+//        game.debug.body(this.house.spr);
+>>>>>>> 51f4dc47656da4587b97f3bb904ea1feea53aa1a
 
         game.debug.text('Active Bullets: ' + this.house.bullets.countLiving() + ' / ' + this.house.bullets.total, 32, 32);
-
     }
 }
 
@@ -65,5 +92,6 @@ function move(object, speed) {
 }
 
 function collisionHandler (obj1, obj2) {
-
+//    console.log(obj2);
+    myMap.removeTile(obj2.x, obj2.y);
 }
