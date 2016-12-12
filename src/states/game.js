@@ -110,7 +110,7 @@ class Game {
         }
 
         game.physics.arcade.overlap(player, food, eatFood);
-        game.physics.arcade.overlap(player, person1, eatPerson);
+        game.physics.arcade.overlap(player, this.person, eatPerson);
 
         function eatFood(player, food) { 
            food.kill();
@@ -119,7 +119,7 @@ class Game {
         }
         
         function eatPerson(player, person) { 
-           person1.kill();
+           this.person.kill();
            score+=20;
            scoreText.text = score;
         }
