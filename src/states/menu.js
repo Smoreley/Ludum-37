@@ -31,18 +31,7 @@ class Menu {
     }
     
     // Nearly all display objects in Phaser render automatically, you don't need to tell them to render. However the render method is called AFTER the game renderer and plugins have rendered, 
-    render () {
-    this.graphics.clear();
-        
-    this.graphics.endFill();
-    this.graphics.beginFill(0xe74c3c); // Red
-    this.graphics.drawRect(256,0,50,50);
-    
-    // Circle
-    this.graphics.beginFill(0xff0000);
-    this.graphics.drawCircle(GAME_WIDTH/2, GAME_HEIGHT/2, 25);
-    this.graphics.endFill();
-        
+    render () {        
 
     }
     
