@@ -10,6 +10,7 @@ class Game {
 
         game.load.tilemap('ludmap', 'raw/ludMapMike.json', null, Phaser.Tilemap.TILED_JSON);
         game.load.image('tiles', 'raw/mapTile2.png');
+        game.load.image('cars', 'bin/imgs/carTile.png');
 
         game.load.image('bullet', 'bin/imgs/toilet32.png');
     }
@@ -22,6 +23,7 @@ class Game {
             // Background Map
         this.map = game.add.tilemap('ludmap');
         this.map.addTilesetImage('mapTile2','tiles');
+        this.map.addTilesetImage('carTile','cars');
         this.ground_layer = this.map.createLayer('Ground');
         this.object_layer = this.map.createLayer('Objects');
 
