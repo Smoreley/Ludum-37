@@ -7,13 +7,16 @@
     var score = 0;
     var scoreText;
     var person1;
+    var person2;
 
     Person = function(game){
   
       this.game = game;
-      this.person = game.add.sprite(GAME_WIDTH*0.2, GAME_HEIGHT*0.2, 'person')
+      this.person = game.add.sprite(game.world.randomX, game.world.randomY, 'person')
       game.physics.arcade.enable(this.person);
-      this.person.scale.setTo(2,2)
+      this.person.scale.setTo(1.2,1.2)
+      this.person.enableBody = true;
+      this.person.body.collideWorldBounds = true;
 
       }
 
@@ -69,7 +72,8 @@ class Game {
         game.physics.enable(food, Phaser.Physics.ARCADE);
         
         person1 = new Person(game);   
-        person1.enableBody = true;
+        person2 = new Person(game);   
+        
 
     }
 
