@@ -1,13 +1,15 @@
 :root {
+/*
     --windowWidth: 640px;
     --windowHeight: 360px;
-    
+*/
 /*
     --windowWidth: 1280px;
     --windowHeight: 720px;
 */
 }
 
+/*
 body {
     background-color: #212121;
 }
@@ -33,4 +35,4 @@ footer {
     position: absolute;
     left: calc(50vw - (var(--windowWidth)/2));
     top: calc(50vh - var(--windowHeight)/2);
-}
+}*/

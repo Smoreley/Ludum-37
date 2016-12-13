@@ -1,7 +1,6 @@
 class Menu {
     constructor() {
         this.name = "Menu_state";
-        
 //        this.graphics = new Graphics();
 
     }
@@ -13,12 +12,13 @@ class Menu {
     // preload is called first. Normally you'd use this to load your game asset
     preload () {
         game.stage.smoothed = false;
-        game.load.image('bg_image', 'bin/imgs/bg_menu.jpeg');
+        game.load.image('bg_image', IMGPATH+'bg_menu.png');
 
     }
     
     // create is called once preload has completed
     create () {
+        
         this.add.button(0, 0, 'bg_image', this.startGame, this);   
 //        this.bg = game.add.sprite(0, 0, 'bg_image');
         this.graphics = game.add.graphics(0,0);
