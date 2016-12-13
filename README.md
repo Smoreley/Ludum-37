@@ -1,13 +1,14 @@
 <p align="center">
-    <img alt="One Room Terror" src="bin/imgs/bg_menu.png" width="284">
+    <img alt="One Room Terror" src="bin/imgs/bg_menu.png" width="426">
 </p>
 
 ## Description
-Coming soon!
+- Coming soon!
+Made for **Ludum Dare #37**
 
 ### Stack
 [<img alt="Node.js" src="stack/nodejs.png" width="128">](https://nodejs.org/en/)
-[<img alt="Phaser" src="stack/phaser.png" width="128">](https://phaser.io/)
+[<img alt="Phaser" src="stack/phaser.png" width="84">](https://phaser.io/)
 
 # Install and run
 ```
