@@ -5,7 +5,13 @@
 ## Description
 - Coming soon!
 Made for **Ludum Dare #37**
-
+## Controls
+- [←] LEFT
+- [ ↑ ] FORWARD
+- [→] RIGHT
+- [ ↓ ] BACKWARD
+- [SPACE] FIRE
+- [MOUSE] LOOK AROUND TO SHOOT
 ### Stack
 [<img alt="Node.js" src="stack/nodejs.png" width="128">](https://nodejs.org/en/)
 [<img alt="Phaser" src="stack/phaser.png" width="84">](https://phaser.io/)
