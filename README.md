@@ -3,7 +3,9 @@
 </p>
 
 ## Description
-- Coming soon!
+This project is still **work in progress**
+[Itch.io](https://smoreley.itch.io/one-room-terror)
+[Ludum Dare](http://ludumdare.com/compo/ludum-dare-37/?action=preview&uid=50886)
 Made for **Ludum Dare #37**
 
 ### Stack
